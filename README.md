@@ -1,5 +1,7 @@
 # action-cable-react-jwt
 
+Original package is no longer supported. This is updated fork.
+
 Same as [action-cable-react](https://github.com/schneidmaster/action-cable-react), but allows authenticating websockets using JWTs
 
 ## Installation
@@ -18,24 +20,22 @@ npm install action-cable-react-jwt
 
 ```
 
-
 ## Usage
 
 Import action-cable-react-jwt
 
 ```javascript
-import ActionCable from 'action-cable-react-jwt.js';
+import ActionCable from "action-cable-react-jwt.js";
 
 // if you don't use ES6 then use
 // const ActionCable = require('action-cable-react-jwt.js');
-
 ```
 
 Creating an actioncable websocket
 
 ```javascript
 let App = {};
-App.cable = ActionCable.createConsumer("ws://cable.example.com", jwt) // place your jwt here
+App.cable = ActionCable.createConsumer("ws://cable.example.com", jwt); // place your jwt here
 
 // you shall also use this.cable = ActionCable.createConsumer(...)
 // to create the connection as soon as the view loads, place this in componentDidMount
@@ -55,15 +55,13 @@ this.subscription = App.cable.subscriptions.create({channel: "YourChannel"}, {
 Send data to a channel
 
 ```javascript
-this.subscription.send('hello world')
-
+this.subscription.send("hello world");
 ```
 
 Call a method on channel with arguments
 
 ```javascript
-this.subscription.perform('method_name', arguments)
-
+this.subscription.perform("method_name", arguments);
 ```
 
 In your `ApplicationCable::Connection` class in Ruby add
@@ -114,34 +112,32 @@ class LocationChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
-  
+
   # called when send is called in client
   def receive(params)
     print params[:data]
   end
-  
+
   # called when perform is called in client
   def method_name(params)
     print params[:data]
   end
-  
+
 end
 ```
 
 Remove a subscription from cable
 
 ```javascript
-App.cable.subscriptions.remove(this.subscription)
+App.cable.subscriptions.remove(this.subscription);
 
 // Place this in componentWillUnmount to remove subscription on exiting app
-
 ```
 
 Add a subscription to cable
 
 ```javascript
-App.cable.subscriptions.add(this.subscription)
-
+App.cable.subscriptions.add(this.subscription);
 ```
 
 Querying url and jwt from cable
@@ -149,7 +145,6 @@ Querying url and jwt from cable
 ```javascript
 console.log(App.cable.jwt);
 console.log(App.cable.url);
-
 ```
 
 Querying subscriptions and connection from cable
@@ -157,10 +152,7 @@ Querying subscriptions and connection from cable
 ```javascript
 console.log(App.cable.subscriptions);
 console.log(App.cable.connection);
-
 ```
-
-
 
 ## License
 
@@ -185,5 +177,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
