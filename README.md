@@ -1,6 +1,6 @@
-# action-cable-react-jwt
+# action-cable-react-with-jwt
 
-Original package is no longer supported. This is updated fork.
+Original package is no longer supported. This is updated fork which uses actioncable in version 6.1
 
 Same as [action-cable-react](https://github.com/schneidmaster/action-cable-react), but allows authenticating websockets using JWTs
 
@@ -9,33 +9,26 @@ Same as [action-cable-react](https://github.com/schneidmaster/action-cable-react
 Yarn:
 
 ```javascript
-yarn add action-cable-react-jwt
+yarn add actioncable-js-jwt
 
 ```
 
 npm:
 
 ```javascript
-npm install action-cable-react-jwt
+npm install actioncable-js-jwt
 
 ```
 
 ## Usage
 
-Import action-cable-react-jwt
-
-```javascript
-import ActionCable from "action-cable-react-jwt.js";
-
-// if you don't use ES6 then use
-// const ActionCable = require('action-cable-react-jwt.js');
-```
-
 Creating an actioncable websocket
 
 ```javascript
+import { createConsumer } from '@rails/actioncable';
+
 let App = {};
-App.cable = ActionCable.createConsumer("ws://cable.example.com", jwt); // place your jwt here
+App.cable = createConsumer("ws://cable.example.com", jwt); // place your jwt here
 
 // you shall also use this.cable = ActionCable.createConsumer(...)
 // to create the connection as soon as the view loads, place this in componentDidMount
@@ -153,27 +146,3 @@ Querying subscriptions and connection from cable
 console.log(App.cable.subscriptions);
 console.log(App.cable.connection);
 ```
-
-## License
-
-MIT
-
-Copyright (c) 2017 Zeke
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
