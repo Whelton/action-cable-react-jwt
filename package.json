@@ -1,6 +1,6 @@
 {
   "name": "actioncable-js-jwt",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Rails actioncable integration with JWT Authentication for React and ReactNative",
   "main": "actioncable-js-jwt.js",
   "files": [
